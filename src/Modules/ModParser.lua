@@ -2274,7 +2274,10 @@ local specialModList = {
 	["gain %d+ rage when hit by an enemy"] = {
 		flag("Condition:CanGainRage"),
 	},
-	["every rage also grants (%d+)%% increased armour"] = function(num) return {
+	["each rage also grants (%d+)%% to damage over time multiplier for bleeding while wielding an Axe"] = function(num) return {
+		mod("DotMultiplier", "BASE", num, { type = "Multiplier", var = "RageEffect" }, { type = "Condition", var = "UsingAxe" }),
+	} end,
+	["each rage also grants (%d+)%% increased armour"] = function(num) return {
 		mod("Armour", "INC", num, { type = "Multiplier", var = "RageEffect" }),
 	} end,
 	["every rage also grants (%d+)%% increased stun threshold"] = function(num) return {
